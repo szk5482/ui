@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Portfolio Site with jQuery</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+$(function(){
+	$(".close").click(function(e){
+		e.preventDefault();
+
+		if(document.checkClose.notice.checked){ // 만일 현재 문서의 Notick 체크 박스가 선택되어 있다면의 조건입니다.
+			setCookie("notice", "1", 1); // notice 변수 값에 1을 대입합니다. 유효일은 하루입니다.
+		}
+		// self.close(); // 팝업을 닫습니다.
+		window.close();
+	});
+	function setCookie(name, value, expiredays){
+		var days=10;
+		if(days){
+			var date=new Date(); 
+			date.setTime(date.getTime()+(days*24*60*60*1000));
+			var expires="; expires="+date.toGMTString();
+		}else{
+			var expires=""; 
+		}
+		document.cookie=name+"="+value+expires+"; path=/";
+	}
+});
+</script>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1em;
+}
+a {
+	text-decoration: none;
+	color: #666;
+}
+section {
+	display: block;
+}
+.popup_container {
+	font-size: 0.875em;
+}
+.popup_area {
+	padding: 10px;
+	width: 380px;
+	height: 350px;
+}
+.close_area {
+	margin: 0 auto;
+	width: 120px;
+	height: 30px;
+	line-height: 16px;
+}
+.close_area .input {
+	display: block;
+	float: left;
+	padding-top: 5px;
+	height: 25px;
+}
+.close_area .text {
+	display: block;
+	float: left;
+	padding-left: 2px;
+	height: 30px;
+	line-height: 28px;
+}
+a.close {
+	display: block;
+	width: 400px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #f4f4f4;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!-- http://publisherj.dothome.co.kr/xe/ -->
+<!-- https://www.w3.org/standards/ -->
+</head>
+
+<body>
+<div class="popup_container">
+	<section class="popup_area">popup area</section>
+	<form name="checkClose">
+		<section class="close_area">
+			<span class="input"><input type="checkbox" name="notice"></span>
+			<span class="text">today close</span>
+		</section>
+		<a href="#none" class="close">close window</a>
+	</form>
+</div>
+</body>
